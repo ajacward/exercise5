@@ -34,6 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'themoviedb'
 
+# Access an IRB console on exception pages or by using <%= console %> in views
+gem 'web-console', group: :development
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -44,9 +47,6 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
@@ -56,4 +56,10 @@ group :production do
   gem 'rails_12factor'
 end
 
-
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'database_cleaner' # to clear Cucumber's test database between runs
+  gem 'capybara'         # lets Cucumber pretend to be a web browser
+  gem 'launchy'          # a useful debugging aid for user stories
+end
