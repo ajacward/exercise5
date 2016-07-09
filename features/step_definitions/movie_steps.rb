@@ -12,3 +12,15 @@ Then /I should see "(.*)" on (.*)/ do |string1, path|
   regexp = /#{string1}/m #  /m means match across newlines
   expect(page.body).to match(regexp)
 end
+
+Given(/^the following movies exist:$/) do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  table.hashes.each do |movie|
+    Movie.create(movie)      
+  end
+end
+
+Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |arg1, arg2|
+  movie = Movie.find_by_title(arg1)
+  expect(movie.director).to eq(arg2)
+end
