@@ -8,6 +8,7 @@
       %th Rating
       %th{id: "release_date_header", class: @date_flag}= link_to "Release Date", movies_path(sort: "date")
       %th Description
+      %th Director
       %th More Info
   %tbody
     - @movies.each do |movie|
@@ -15,6 +16,7 @@
         %td= movie.title 
         %td= movie.rating
         %td= movie.release_date
+        %td= movie.description
         %td= movie.director
         %td= link_to "More about #{movie.title}", movie_path(movie)
 
