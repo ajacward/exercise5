@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :movies
+
+  get 'movies/:id/movies_with_same_director' => 'movies#movies_with_same_director', as: :movies_with_same_director  
   
   # Example resource route with options:
   #   resources :products do
